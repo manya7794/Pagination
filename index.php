@@ -1,3 +1,24 @@
+<?php
+
+//Connexion à la base de données
+require_once("connexion.php");
+
+//Création de la requête
+$demande= "SELECT * FROM 'ELEMENTS' ORDER BY 'created_at' DESC;";
+
+//Préparation de la requête
+$requete=$bdd->prepare($demande);
+
+//Execution de la requête
+$requete->execute();
+
+//Ajout des résultats de la requête dans un tableau
+$elements =$requete->fetchAll(PDO::FETCH_ASSOC);
+
+//Deconnexion de la base de données
+require_once("deconnexion.php");
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -25,6 +46,7 @@
                 <td><?= $element ?></td>
             </tr>
         <?php
+        //Fin de la boucle for
         }
         ?>
         </tbody>
