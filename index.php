@@ -43,7 +43,11 @@ require_once("deconnexion.php");
             ?>
             <tr>
                 <!--Affichage de l'élément dans une ligne du tableau-->
-                <td><?= $element ?></td>
+                <td>
+                    <?php
+                    echo "<img src=".$element."/>" 
+                    ?>
+                </td>
             </tr>
         <?php
         //Fin de la boucle for
