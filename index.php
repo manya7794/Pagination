@@ -17,6 +17,9 @@ $elements =$requete->fetchAll(PDO::FETCH_ASSOC);
 
 //Deconnexion de la base de données
 require_once("deconnexion.php");
+
+//Variable de navigation dans le tableau d'images
+$elementActuel=0
 ?>
 
 <!DOCTYPE html>
@@ -38,17 +41,32 @@ require_once("deconnexion.php");
         <tbody>
             <!--Affichage des élements-->
             <?php
-            //Boucle de sélection des éléments
-        foreach($elements as $element){
+                //Nombre d'éléments dans le tableau actuel (4 éléments max)
+                $item=0;
+                //Boucle de sélection des éléments
+                for($elementActuel;$elementActuel<count($elements);++$elementActuel){
+                    
+                    //Création d'une nouvelle ligne dans le tableau
+                    if($item==0||$item==2){
+                        echo "<tr>";
+                    }
             ?>
-            <tr>
-                <!--Affichage de l'élément dans une ligne du tableau-->
-                <td>
-                    <?php
-                    echo "<img src=".$element."/>" 
-                    ?>
-                </td>
-            </tr>
+
+            <!--Création d'une nouvelle cellule-->
+            <td>
+                <?php
+                //Affichage de l'élément dans une ligne du tableau
+                echo "<img src=".$element[$elementActuel]."/>";
+                ?>
+            </td>
+
+            <?php
+                //Fermeture de la ligne du tableau
+                if($item==1||$item==3){
+                    echo "</tr>";
+                }
+            ?>
+
         <?php
         //Fin de la boucle for
         }
