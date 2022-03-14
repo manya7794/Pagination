@@ -1,84 +1,107 @@
 <?php
+// On détermine sur quelle page on se trouve
+if(isset($_GET['page']) && !empty($_GET['page'])){
+    $currentPage = (int) strip_tags($_GET['page']);
+}else{
+    $currentPage = 1;
+}
+// On se connecte à là base de données
+require_once('connexion.php');
 
-//Connexion à la base de données
-require_once("connexion.php");
+// On détermine le nombre total d'images
+$sql = 'SELECT COUNT(*) AS nb_images FROM `file`;';
 
-//Création de la requête
-$demande= "SELECT * FROM 'ELEMENTS' ORDER BY 'created_at' DESC;";
+// On prépare la requête
+$query = $bdd->prepare($sql);
 
-//Préparation de la requête
-$requete=$bdd->prepare($demande);
+// On exécute
+$query->execute();
 
-//Execution de la requête
-$requete->execute();
+// On récupère le nombre d'images
+$result = $query->fetch();
 
-//Ajout des résultats de la requête dans un tableau
-$elements =$requete->fetchAll(PDO::FETCH_ASSOC);
+$nbimages = (int) $result['nb_images'];
 
-//Deconnexion de la base de données
-require_once("deconnexion.php");
+// On détermine le nombre d'images par page
+$parPage = 4;
 
-//Variable de navigation dans le tableau d'images
-$elementActuel=0
+// On calcule le nombre de pages total
+$pages = ceil($nbimages / $parPage);
+
+// Calcul du 1er image de la page
+$premier = ($currentPage * $parPage) - $parPage;
+
+$sql = 'SELECT * FROM `file` ORDER BY `id` DESC LIMIT :premier, :parpage;';
+
+// On prépare la requête
+$query = $bdd->prepare($sql);
+
+$query->bindValue(':premier', $premier, PDO::PARAM_INT);
+$query->bindValue(':parpage', $parPage, PDO::PARAM_INT);
+
+// On exécute
+$query->execute();
+
+// On récupère les valeurs dans un tableau associatif
+$images = $query->fetchAll(PDO::FETCH_ASSOC);
+
+require_once('deconnexion.php');
 ?>
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pagination</title>
+    <title>Document</title>
+
 </head>
 <body>
-    <table>
-        <thead>
-            <tr>
-                <!--Header du tableau-->
-                <th colspan="2">Éléments</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!--Affichage des élements-->
-            <?php
-                //Nombre d'éléments dans le tableau actuel (4 éléments max)
-                $item=0;
-                //Boucle de sélection des éléments
-                for($elementActuel;$elementActuel<count($elements);++$elementActuel){
-                    
-                    //Création d'une nouvelle ligne dans le tableau
-                    if($item==0||$item==2){
-                        echo "<tr>";
-                    }
-            ?>
-
-            <!--Création d'une nouvelle cellule-->
-            <td>
-                <?php
-                //Affichage de l'élément dans une ligne du tableau
-                echo "<img src=".$element[$elementActuel]."/>";
-                ?>
-            </td>
-
-            <?php
-                //Fermeture de la ligne du tableau
-                if($item==1||$item==3){
-                    echo "</tr>";
-                }
-            ?>
-
-        <?php
-        //Fin de la boucle for
-        }
-        ?>
-        </tbody>
-    </table>
+    <main class="container">
+        <div class="row">
+            <section class="col-12">
+                <h1>Liste des images</h1>
+                <table class="table">
+                    <thead>
+                        <th>ID</th>
+                        <th>Image</th>
+                    </thead>
+                    <tbody>
+                        <?php
+                        foreach($images as $image){
+                        ?>
+                            <tr>
+                                <td><?= $image['id'] ?></td>
+                                <td>
+                                    <?php
+                                        echo "<img src='./upload/".$image['name']."' width='300px' ><br>";
+                                    ?>
+                                </td>
+                            </tr>
+                        <?php
+                        }
+                        ?>
+                    </tbody>
+                </table>
+                <nav>
+                    <ul class="pagination">
+                        <!-- Lien vers la page précédente (désactivé si on se trouve sur la 1ère page) -->
+                        <li class="page-item <?= ($currentPage == 1) ? "disabled" : "" ?>">
+                            <a href="./index.php?page=<?= $currentPage - 1 ?>" class="page-link">Précédente</a>
+                        </li>
+                        <?php for($page = 1; $page <= $pages; $page++): ?>
+                          <!-- Lien vers chacune des pages (activé si on se trouve sur la page correspondante) -->
+                          <li class="page-item <?= ($currentPage == $page) ? "active" : "" ?>">
+                                <a href=".index.php/?page=<?= $page ?>" class="page-link"><?= $page ?></a>
+                            </li>
+                        <?php endfor ?>
+                          <!-- Lien vers la page suivante (désactivé si on se trouve sur la dernière page) -->
+                          <li class="page-item <?= ($currentPage == $pages) ? "disabled" : "" ?>">
+                            <a href="./index.php?page=<?= $currentPage + 1 ?>" class="page-link">Suivante</a>
+                        </li>
+                    </ul>
+                </nav>
+            </section>
+        </div>
+    </main>
 </body>
-
-<footer>
-    <!--Lien vers la page précedente-->
-    <a href="./?page=<?$currentPage -1?>" class="lienPages">Précedente</a>
-    <!--Lien vers la page suivante-->
-    <a href="./?page=<?=$currentPage +1?>" class="lienPages"Suivante></a>
-</footer>
 </html>
