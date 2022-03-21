@@ -53,6 +53,7 @@ require_once('deconnexion.php');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="index.css">
+    <?php include("televerse.php"); ?>
     <title>Document</title>
 
 </head>
@@ -63,6 +64,9 @@ require_once('deconnexion.php');
                 <h1>Liste des images</h1>
                 <table class="table">
                     <thead>
+                        <th>ID</th>
+                        <th>Image</th>
+                        <th>ID</th>
                         <th>Image</th>
                     </thead>
                     <tbody>
@@ -74,14 +78,19 @@ require_once('deconnexion.php');
                                         if(($nb%2)!=0){
                                             echo "<tr>";
                                             echo "<td>";
-                                            echo "<img src='./upload/".$image['name']."' width='300px' ><br>";
+                                            echo $image['id'];
+                                            echo "</td>";
+                                            echo "<td>";
+                                            echo "<img src='./upload/".$image['name']."' height='300px'  width='300px' ><br>";
                                             echo "</td>";
                                             $nb=$nb+1;
                                         }
                                         else{
                                             echo "<td>";
-                                            echo"<?=". $image['id']." ?>";
-                                            echo "<img src='./upload/".$image['name']."' width='300px' >";
+                                            echo $image['id'];
+                                            echo "</td>";
+                                            echo "<td>";
+                                            echo "<img src='./upload/".$image['name']."' height='300px' width='300px' >";
                                             echo "</td>";
                                             echo "</tr>";
                                             $nb=$nb+1;

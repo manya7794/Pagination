@@ -23,12 +23,20 @@ if(isset($_FILES['file'])){
 
         $req = $bdd->prepare('INSERT INTO file (name) VALUES (?)');
         $req->execute([$file]);
-
-        echo '<script>alert("Image enregistrée")</script>';  
-        
+        ?>
+        <script type="text/javascript">
+            alert("Image enregistrée");
+            window.location.href = "index.php";
+        </script>  
+        <?php
     }
     else{
-        echo '<script>alert("Une erreur est survenue")</script>'; 
+        ?>
+        <script type="text/javascript">
+            alert("Une erreur est survenue");
+            window.location.href = "index.php";
+        </script>  
+        <?php
     }
 }
 
@@ -51,12 +59,5 @@ if(isset($_FILES['file'])){
 
         <button type="submit">Enregistrer</button>
     </form>
-    <h2>Mes images</h2>
-    <?php 
-        $req = $bdd->query('SELECT name FROM file');
-        while($data = $req->fetch()){
-            echo "<img src='./upload/".$data['name']."' width='300px' ><br>";
-        }
-    ?>
 </body>
 </html>
