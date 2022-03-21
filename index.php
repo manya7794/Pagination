@@ -110,7 +110,7 @@ require_once('deconnexion.php');
                         <?php for($page = 1; $page <= $pages; $page++): ?>
                           <!-- Lien vers chacune des pages (activé si on se trouve sur la page correspondante) -->
                           <li class="page-item <?= ($currentPage == $page) ? "active" : "" ?>">
-                                <a href=".index.php/?page=<?= $page ?>" class="page-link"><?= $page ?></a>
+                                <a href="./index.php?page=<?= $page ?>" class="page-link"><?= $page ?></a>
                             </li>
                         <?php endfor ?>
                           <!-- Lien vers la page suivante (désactivé si on se trouve sur la dernière page) -->
