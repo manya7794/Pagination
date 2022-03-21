@@ -52,6 +52,7 @@ require_once('deconnexion.php');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
     <title>Document</title>
 
 </head>
@@ -62,21 +63,30 @@ require_once('deconnexion.php');
                 <h1>Liste des images</h1>
                 <table class="table">
                     <thead>
-                        <th>ID</th>
                         <th>Image</th>
                     </thead>
                     <tbody>
                         <?php
+                        $nb=1;
                         foreach($images as $image){
                         ?>
-                            <tr>
-                                <td><?= $image['id'] ?></td>
-                                <td>
-                                    <?php
-                                        echo "<img src='./upload/".$image['name']."' width='300px' ><br>";
+                                <?php
+                                        if(($nb%2)!=0){
+                                            echo "<tr>";
+                                            echo "<td>";
+                                            echo "<img src='./upload/".$image['name']."' width='300px' ><br>";
+                                            echo "</td>";
+                                            $nb=$nb+1;
+                                        }
+                                        else{
+                                            echo "<td>";
+                                            echo"<?=". $image['id']." ?>";
+                                            echo "<img src='./upload/".$image['name']."' width='300px' >";
+                                            echo "</td>";
+                                            echo "</tr>";
+                                            $nb=$nb+1;
+                                        }
                                     ?>
-                                </td>
-                            </tr>
                         <?php
                         }
                         ?>
