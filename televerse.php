@@ -12,17 +12,23 @@ if(isset($_FILES['file'])){
     $extension = strtolower(end($tabExtension));
 
     $extensions = ['jpg', 'png', 'jpeg', 'gif'];
-    $maxSize = 400000;
+    $maxSize = 8*1024*1024;
 
     if(in_array($extension, $extensions) && $size <= $maxSize && $error == 0){
 
         $uniqueName = uniqid('', true);
         $file = $name;
+        $taille=$size;
 
         move_uploaded_file($tmpName, './upload/'.$file);
 
-        $req = $bdd->prepare('INSERT INTO file (name) VALUES (?)');
-        $req->execute([$file]);
+        $req = $bdd->prepare('INSERT INTO file (name, taille, chemin, extension) VALUES (?,?, ?, ?)');
+        $req->bindParam(1,$file);
+        $req->bindParam(2,$taille);
+        $path="upload\\".$name;
+        $req->bindParam(3,$path);
+        $req->bindParam(4,$extension);
+        $req->execute();
         ?>
         <script type="text/javascript">
             alert("Image enregistrée");
