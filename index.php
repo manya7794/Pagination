@@ -54,7 +54,7 @@ require_once('deconnexion.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="index.css">
     <?php include("televerse.php"); ?>
-    <title>Document</title>
+    <title>Téléversement</title>
 
 </head>
 <body>
