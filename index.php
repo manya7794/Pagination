@@ -81,7 +81,7 @@ require_once('deconnexion.php');
                                             echo $image['id'];
                                             echo "</td>";
                                             echo "<td>";
-                                            echo "<img src='./upload/".$image['name']."' height='300px'  width='300px' ><br>";
+                                            echo "<img src='".$image['chemin']."".$image['name']."' height='300px'  width='300px' ><br>";
                                             echo "</td>";
                                             $nb=$nb+1;
                                         }
@@ -90,7 +90,7 @@ require_once('deconnexion.php');
                                             echo $image['id'];
                                             echo "</td>";
                                             echo "<td>";
-                                            echo "<img src='./upload/".$image['name']."' height='300px' width='300px' >";
+                                            echo "<img src='".$image['chemin']."".$image['name']."' height='300px'  width='300px' ><br>";
                                             echo "</td>";
                                             echo "</tr>";
                                             $nb=$nb+1;
