@@ -44,19 +44,20 @@ function explorerDir($path)
 				//Si c'est un .png ou un .jpeg		
 				//Alors je ferais quoi ? Devinez !
 				//...
+				//Récupération des infos du fichier
 				$infoFichier=pathinfo($path_source);
 				$extension=$infoFichier['extension'];
 				$extensions = ['jpg', 'png', 'jpeg', 'gif'];
 				
 				if(in_array($extension, $extensions)){
 					//Nom
-
+					$infoFichier['filename'];
 					//Taille
-
+					$tailleFichier = filesize($path_source);
 					//Chemin
-
+					$infoFichier['dirname'];
 					//Extension
-					
+					$infoFichier['extension'];
 				}
 				
 			}
