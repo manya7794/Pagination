@@ -63,7 +63,7 @@ function explorerDir($path)
 					$tailleFichier = filesize($path_source);
 					$req->bindParam(2,$tailleFichier);
 					//Chemin
-					$cheminFichier = $infoFichier['dirname'];
+					$cheminFichier = $infoFichier['dirname']."/";
 					$req->bindParam(3,$cheminFichier);
 					//Extension
 					$extensionFichier = $infoFichier['extension'];
