@@ -50,14 +50,26 @@ function explorerDir($path)
 				$extensions = ['jpg', 'png', 'jpeg', 'gif'];
 				
 				if(in_array($extension, $extensions)){
+					//Connexion à la BDD
+					require './connexion.php';
+					
+					//Création de la requête
+					$req = $bdd->prepare('INSERT INTO file (name, taille, chemin, extension) VALUES (?,?, ?, ?)');
+					
 					//Nom
-					$infoFichier['filename'];
+					$nomFichier = $infoFichier['filename'];
+					$req->bindParam(1,$nomFichier);
 					//Taille
 					$tailleFichier = filesize($path_source);
+					$req->bindParam(2,$tailleFichier);
 					//Chemin
-					$infoFichier['dirname'];
+					$cheminFichier = $infoFichier['dirname'];
+					$req->bindParam(3,$cheminFichier);
 					//Extension
-					$infoFichier['extension'];
+					$extensionFichier = $infoFichier['extension'];
+					$req->bindParam(4,$extensionFichier);
+					
+					$req->execute();
 				}
 				
 			}
