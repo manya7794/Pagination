@@ -58,6 +58,8 @@ require_once('deconnexion.php');
 
 </head>
 <body>
+    <h2>Lecture récursive du dossier docs/</h2>
+    <button onclick="window.location.href='LireRecursDir.php';">Lecture récursive</button>
     <main class="container">
         <div class="row">
             <section class="col-12">

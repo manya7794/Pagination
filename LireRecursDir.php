@@ -1,4 +1,4 @@
-
+<button onclick="window.location.href='index.php';">Retour à l'index</button>
 <P>
 <B>DEBUTTTTTT DU PROCESSUS :</B>
 <BR>
@@ -87,4 +87,5 @@ function explorerDir($path)
 <B>FINNNNNN DU PROCESSUS :</B>
 <BR>
 <?php echo " ", date ("h:i:s"); ?>
+<button onclick="window.location.href='index.php';">Retour à l'index</button>
 </P>
