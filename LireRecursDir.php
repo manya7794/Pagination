@@ -17,7 +17,7 @@ function explorerDir($path)
 {
 	//Ouverture du dossier spécifié
 	$folder = opendir($path);
-	
+	echo "<p>Ouverture du dossier ". $path."</p>";
 	//Tant qu'un fichier est détecté 
 	while($entree = readdir($folder))
 	{		
@@ -41,6 +41,8 @@ function explorerDir($path)
 				//Mise en mémoire du chemin du fichier
 				$path_source = $path."/".$entree;				
 				
+				echo "<p>Analyse du fichier ". $entree."</p>";
+
 				//Si c'est un .png ou un .jpeg		
 				//Alors je ferais quoi ? Devinez !
 				//...
@@ -50,6 +52,9 @@ function explorerDir($path)
 				$extensions = ['jpg', 'png', 'jpeg', 'gif'];
 				
 				if(in_array($extension, $extensions)){
+
+					echo "<p>".$entree." est une image</p>";
+
 					//Connexion à la BDD
 					require './connexion.php';
 					
