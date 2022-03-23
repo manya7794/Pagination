@@ -3,6 +3,7 @@
 
 ## Pagination
 La page index.php permet d'afficher les images présentes dans la base de données. Celles-ci sont affichées sous la forme d'un tableau de taille 2x2 montrant le numéro de l'image dans la base, sa taille et le dossier dans lequel elle se situe.
+
 ![image](https://user-images.githubusercontent.com/72400479/159757940-ba8d7e1a-7602-403f-a24e-f0c436e8d7b3.png)
 
 En dessous des images se trouvent la pagination qui permet de naviguer entre les pages. Le nombre de pages est déterminé en fonction du nombre d'éléments que l'on souhaite afficher par page et du nombre d'éléments total de la base de données.
