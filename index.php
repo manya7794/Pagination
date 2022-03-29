@@ -63,6 +63,7 @@
         <h2>Lecture récursive du dossier docs/</h2>
         <button onclick="window.location.href='LireRecursDir.php';">Lecture récursive</button>
         <p></p>
+        <h2>Arborescence du dossier docs</h2>
         <main class="container">
 
             <div class="iframe-container">
