@@ -1,0 +1,10 @@
+.connexion {
+    min-height: 10em;
+    display: table-cell;
+    vertical-align: middle 
+}
+
+img{
+    width: 200px;
+    height: auto;
+}
