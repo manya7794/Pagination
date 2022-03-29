@@ -62,6 +62,7 @@
     <body>
         <h2>Lecture récursive du dossier docs/</h2>
         <button onclick="window.location.href='LireRecursDir.php';">Lecture récursive</button>
+        <p></p>
         <main class="container">
 
             <div class="iframe-container">
@@ -90,7 +91,7 @@
                                                     echo $image['id'];
                                                     echo "</td>";
                                                     echo "<td>";
-                                                    echo "<img src='".$image['chemin']."".$image['name']."' height='300px'  width='300px' ><br>";
+                                                    echo "<img src='".$image['chemin']."".$image['name']."' height='250px'  width='250px' ><br>";
                                                     echo "<p> Poids : ".$image['taille']."</p>";
                                                     echo "<p> Chemin : ".$image['chemin']."</p>";
                                                     echo "</td>";
@@ -101,7 +102,7 @@
                                                     echo $image['id'];
                                                     echo "</td>";
                                                     echo "<td>";
-                                                    echo "<img src='".$image['chemin']."".$image['name']."' height='300px'  width='300px' ><br>";
+                                                    echo "<img src='".$image['chemin']."".$image['name']."' height='250px'  width='250px' ><br>";
                                                     echo "<p> Poids : ".$image['taille']."</p>";
                                                     echo "<p> Chemin : ".$image['chemin']."</p>";
                                                     echo "</td>";
