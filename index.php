@@ -67,56 +67,56 @@
         <main class="container">
 
             <div class="iframe-container">
-            <iframe src="AfficheArborescence.php" title="Arborescence" ></iframe>
+                <iframe src="AfficheArborescence.php" title="Arborescence" ></iframe>
             </div>
-            <!-- <?php include("AfficheArborescence.php"); ?>-->
+            <?php include("AfficheArborescence.php"); ?>
 
-                <div class="row">
-                        <table class="tableau">
-                            <h1>Liste des images</h1>
-                            <thead>
-                                <th>ID</th>
-                                <th>Image</th>
-                                <th>ID</th>
-                                <th>Image</th>
-                            </thead>
-                            <tbody>
-                                <?php
-                                $nb=1;
-                                foreach($images as $image){
-                                ?>
-                                        <?php
-                                                if(($nb%2)!=0){
-                                                    echo "<tr>";
-                                                    echo "<td>";
-                                                    echo $image['id'];
-                                                    echo "</td>";
-                                                    echo "<td>";
-                                                    echo "<img src='".$image['chemin']."".$image['name'].".".$image['extension']."' title='".$image['name']."' height='250px'  width='250px' ><br>";
-                                                    echo "<p> Poids : ".$image['taille']."</p>";
-                                                    echo "<p> Chemin : ".$image['chemin']."</p>";
-                                                    echo "</td>";
-                                                    $nb=$nb+1;
-                                                }
-                                                else{
-                                                    echo "<td>";
-                                                    echo $image['id'];
-                                                    echo "</td>";
-                                                    echo "<td>";
-                                                    echo "<img src='".$image['chemin']."".$image['name'].".".$image['extension']."' title='".$image['name']."' height='250px'  width='250px' ><br>";
-                                                    echo "<p> Poids : ".$image['taille']."</p>";
-                                                    echo "<p> Chemin : ".$image['chemin']."</p>";
-                                                    echo "</td>";
-                                                    echo "</tr>";
-                                                    $nb=$nb+1;
-                                                }
-                                            ?>
-                                <?php
+            <div class="row">
+                <table class="tableau">
+                    <h1>Liste des images</h1>
+                    <thead>
+                        <th>ID</th>
+                        <th>Image</th>
+                        <th>ID</th>
+                        <th>Image</th>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $nb=1;
+                        foreach($images as $image){
+                        ?>
+                            <?php
+                                if(($nb%2)!=0){
+                                    echo "<tr>";
+                                    echo "<td>";
+                                    echo $image['id'];
+                                    echo "</td>";
+                                    echo "<td>";
+                                    echo "<img src='".$image['chemin']."".$image['name'].".".$image['extension']."' title='".$image['name']."' height='250px'  width='250px' ><br>";
+                                    echo "<p> Poids : ".$image['taille']."</p>";
+                                    echo "<p> Chemin : ".$image['chemin']."</p>";
+                                    echo "</td>";
+                                    $nb=$nb+1;
                                 }
-                                ?>
-                            </tbody>
-                        </table>
-                </div>
+                                else{
+                                    echo "<td>";
+                                    echo $image['id'];
+                                    echo "</td>";
+                                    echo "<td>";
+                                    echo "<img src='".$image['chemin']."".$image['name'].".".$image['extension']."' title='".$image['name']."' height='250px'  width='250px' ><br>";
+                                    echo "<p> Poids : ".$image['taille']."</p>";
+                                    echo "<p> Chemin : ".$image['chemin']."</p>";
+                                    echo "</td>";
+                                    echo "</tr>";
+                                    $nb=$nb+1;
+                                }
+                            ?>
+                            <?php
+                                }
+                            ?>
+                    </tbody>
+                </table>
+            </div>
                 <nav>
                     <ul class="pagination">
                         <!-- Lien vers la page précédente (désactivé si on se trouve sur la 1ère page) -->
