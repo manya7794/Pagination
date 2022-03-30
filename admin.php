@@ -93,10 +93,11 @@
                                                     echo $image['id'];
                                                     echo "</td>";
                                                     echo "<td>";
-                                                    echo "<img src='".$image['chemin']."".$image['name']."' height='250px'  width='250px' ><br>";
+                                                    echo "<img src='".$image['chemin']."".$image['name'].".".$image['extension']."' title='".$image['name']."' height='250px'  width='250px' ><br>";
                                                     echo "<p> Poids : ".$image['taille']."</p>";
                                                     echo "<p> Chemin : ".$image['chemin']."</p>";
                                                     ?>
+                                                    <!-- Bouton d'appel de la fonction de suppression-->
                                                     <form action='supprimeImage.php?id="<?php echo $image['id']; ?>"' method="post">
                                                         <input type="hidden" name="name" value="<?php echo $image['id']; ?>">
                                                         <input type="submit" name="submit" value="Supprimer">
@@ -110,10 +111,11 @@
                                                     echo $image['id'];
                                                     echo "</td>";
                                                     echo "<td>";
-                                                    echo "<img src='".$image['chemin']."".$image['name']."' height='250px'  width='250px' ><br>";
+                                                    echo "<img src='".$image['chemin']."".$image['name'].".".$image['extension']."' title='".$image['name']."' height='250px'  width='250px' ><br>";
                                                     echo "<p> Poids : ".$image['taille']."</p>";
                                                     echo "<p> Chemin : ".$image['chemin']."</p>";
                                                     ?>
+                                                    <!-- Bouton d'appel de la fonction de suppression-->
                                                     <form action='supprimeImage.php?id="<?php echo $image['id']; ?>"' method="post">
                                                         <input type="hidden" name="name" value="<?php echo $image['id']; ?>">
                                                         <input type="submit" name="submit" value="Supprimer">

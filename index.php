@@ -92,7 +92,7 @@
                                                     echo $image['id'];
                                                     echo "</td>";
                                                     echo "<td>";
-                                                    echo "<img src='".$image['chemin']."".$image['name']."' height='250px'  width='250px' ><br>";
+                                                    echo "<img src='".$image['chemin']."".$image['name'].".".$image['extension']."' title='".$image['name']."' height='250px'  width='250px' ><br>";
                                                     echo "<p> Poids : ".$image['taille']."</p>";
                                                     echo "<p> Chemin : ".$image['chemin']."</p>";
                                                     echo "</td>";
@@ -103,7 +103,7 @@
                                                     echo $image['id'];
                                                     echo "</td>";
                                                     echo "<td>";
-                                                    echo "<img src='".$image['chemin']."".$image['name']."' height='250px'  width='250px' ><br>";
+                                                    echo "<img src='".$image['chemin']."".$image['name'].".".$image['extension']."' title='".$image['name']."' height='250px'  width='250px' ><br>";
                                                     echo "<p> Poids : ".$image['taille']."</p>";
                                                     echo "<p> Chemin : ".$image['chemin']."</p>";
                                                     echo "</td>";
