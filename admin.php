@@ -68,88 +68,88 @@
         <main class="container">
 
             <div class="iframe-container">
-            <iframe src="AfficheArborescence.php" title="Arborescence" ></iframe>
+                <iframe src="AfficheArborescence.php" title="Arborescence" ></iframe>
             </div>
-            <!-- <?php include("AfficheArborescence.php"); ?>-->
+            <?php include("AfficheArborescence.php"); ?>
 
-                <div class="row">
-                        <table class="tableau">
-                            <h1>Liste des images</h1>
-                            <thead>
-                                <th>ID</th>
-                                <th>Image</th>
-                                <th>ID</th>
-                                <th>Image</th>
-                            </thead>
-                            <tbody>
-                                <?php
-                                $nb=1;
-                                foreach($images as $image){
+            <div class="row">
+                <table class="tableau">
+                    <h1>Liste des images</h1>
+                    <thead>
+                        <th>ID</th>
+                        <th>Image</th>
+                        <th>ID</th>
+                        <th>Image</th>
+                    </thead>
+                    <tbody>
+                        <?php
+                            $nb=1;
+                            foreach($images as $image){
+                        ?>
+                        <?php
+                            if(($nb%2)!=0){
+                                echo "<tr>";
+                                echo "<td>";
+                                echo $image['id'];
+                                echo "</td>";
+                                echo "<td>";
+                                echo "<img src='".$image['chemin']."".$image['name'].".".$image['extension']."' title='".$image['name']."' height='250px'  width='250px' ><br>";
+                                echo "<p> Poids : ".$image['taille']."</p>";
+                                echo "<p> Chemin : ".$image['chemin']."</p>";
                                 ?>
-                                        <?php
-                                                if(($nb%2)!=0){
-                                                    echo "<tr>";
-                                                    echo "<td>";
-                                                    echo $image['id'];
-                                                    echo "</td>";
-                                                    echo "<td>";
-                                                    echo "<img src='".$image['chemin']."".$image['name'].".".$image['extension']."' title='".$image['name']."' height='250px'  width='250px' ><br>";
-                                                    echo "<p> Poids : ".$image['taille']."</p>";
-                                                    echo "<p> Chemin : ".$image['chemin']."</p>";
-                                                    ?>
-                                                    <!-- Bouton d'appel de la fonction de suppression-->
-                                                    <form action='supprimeImage.php?id="<?php echo $image['id']; ?>"' method="post">
-                                                        <input type="hidden" name="name" value="<?php echo $image['id']; ?>">
-                                                        <input type="submit" name="submit" value="Supprimer">
-                                                    </form>
-                                                    <?php
-                                                    echo "</td>";
-                                                    $nb=$nb+1;
-                                                }
-                                                else{
-                                                    echo "<td>";
-                                                    echo $image['id'];
-                                                    echo "</td>";
-                                                    echo "<td>";
-                                                    echo "<img src='".$image['chemin']."".$image['name'].".".$image['extension']."' title='".$image['name']."' height='250px'  width='250px' ><br>";
-                                                    echo "<p> Poids : ".$image['taille']."</p>";
-                                                    echo "<p> Chemin : ".$image['chemin']."</p>";
-                                                    ?>
-                                                    <!-- Bouton d'appel de la fonction de suppression-->
-                                                    <form action='supprimeImage.php?id="<?php echo $image['id']; ?>"' method="post">
-                                                        <input type="hidden" name="name" value="<?php echo $image['id']; ?>">
-                                                        <input type="submit" name="submit" value="Supprimer">
-                                                    </form>
-                                                    <?php
-                                                    echo "</td>";
-                                                    echo "</tr>";
-                                                    $nb=$nb+1;
-                                                }
-                                            ?>
+                                <!-- Bouton d'appel de la fonction de suppression-->
+                                <form action='supprimeImage.php?id="<?php echo $image['id']; ?>"' method="post">
+                                    <input type="hidden" name="name" value="<?php echo $image['id']; ?>">
+                                    <input type="submit" name="submit" value="Supprimer">
+                                </form>
                                 <?php
-                                }
+                                echo "</td>";
+                                $nb=$nb+1;
+                            }
+                            else{
+                                echo "<td>";
+                                echo $image['id'];
+                                echo "</td>";
+                                echo "<td>";
+                                echo "<img src='".$image['chemin']."".$image['name'].".".$image['extension']."' title='".$image['name']."' height='250px'  width='250px' ><br>";
+                                echo "<p> Poids : ".$image['taille']."</p>";
+                                echo "<p> Chemin : ".$image['chemin']."</p>";
                                 ?>
-                            </tbody>
-                        </table>
-                </div>
-                <nav>
-                    <ul class="pagination">
-                        <!-- Lien vers la page précédente (désactivé si on se trouve sur la 1ère page) -->
-                        <li class="page-item <?= ($currentPage == 1) ? "disabled" : "" ?>">
-                            <a href="./index.php?page=<?= $currentPage - 1 ?>" class="page-link">Précédente</a>
+                                <!-- Bouton d'appel de la fonction de suppression-->
+                                <form action='supprimeImage.php?id="<?php echo $image['id']; ?>"' method="post">
+                                    <input type="hidden" name="name" value="<?php echo $image['id']; ?>">
+                                    <input type="submit" name="submit" value="Supprimer">
+                                </form>
+                                <?php
+                                echo "</td>";
+                                echo "</tr>";
+                                $nb=$nb+1;
+                            }
+                        ?>
+                        <?php
+                            }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+            <nav>
+                <ul class="pagination">
+                    <!-- Lien vers la page précédente (désactivé si on se trouve sur la 1ère page) -->
+                    <li class="page-item <?= ($currentPage == 1) ? "disabled" : "" ?>">
+                        <a href="./index.php?page=<?= $currentPage - 1 ?>" class="page-link">Précédente</a>
+                    </li>
+                    <?php for($page = 1; $page <= $pages; $page++): ?>
+                    <!-- Lien vers chacune des pages (activé si on se trouve sur la page correspondante) -->
+                    <li class="page-item <?= ($currentPage == $page) ? "active" : "" ?>">
+                            <a href="./index.php?page=<?= $page ?>" class="page-link"><?= $page ?></a>
                         </li>
-                        <?php for($page = 1; $page <= $pages; $page++): ?>
-                        <!-- Lien vers chacune des pages (activé si on se trouve sur la page correspondante) -->
-                        <li class="page-item <?= ($currentPage == $page) ? "active" : "" ?>">
-                                <a href="./index.php?page=<?= $page ?>" class="page-link"><?= $page ?></a>
-                            </li>
-                        <?php endfor ?>
-                        <!-- Lien vers la page suivante (désactivé si on se trouve sur la dernière page) -->
-                        <li class="page-item <?= ($currentPage == $pages) ? "disabled" : "" ?>">
-                            <a href="./index.php?page=<?= $currentPage + 1 ?>" class="page-link">Suivante</a>
-                        </li>
-                    </ul>
-                </nav>
+                    <?php endfor ?>
+                    <!-- Lien vers la page suivante (désactivé si on se trouve sur la dernière page) -->
+                    <li class="page-item <?= ($currentPage == $pages) ? "disabled" : "" ?>">
+                        <a href="./index.php?page=<?= $currentPage + 1 ?>" class="page-link">Suivante</a>
+                    </li>
+                </ul>
+            </nav>
         </main>
     </body>
 </html>
