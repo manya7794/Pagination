@@ -69,7 +69,7 @@
             <div class="iframe-container">
                 <iframe src="AfficheArborescence.php" title="Arborescence" ></iframe>
             </div>
-            <?php include("AfficheArborescence.php"); ?>
+            
 
             <div class="row">
                 <table class="tableau">
