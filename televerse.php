@@ -17,10 +17,10 @@ if(isset($_FILES['file'])){
     if(in_array($extension, $extensions) && $size <= $maxSize && $error == 0){
 
         $uniqueName = uniqid('', true);
-        $file = strtolower($tabExtension[0]);
+        $file = $tabExtension[0];
         $taille=$size;
 
-        move_uploaded_file($tmpName, './upload/'.$file);
+        move_uploaded_file($tmpName, './upload/'.$file.'.'.$extension);
 
         $req = $bdd->prepare('INSERT INTO file (name, taille, chemin, extension) VALUES (?,?, ?, ?)');
         $req->bindParam(1,$file);
