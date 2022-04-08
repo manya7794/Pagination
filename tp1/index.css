@@ -1,0 +1,35 @@
+li {
+    display: inline-block;
+    size: 15px;
+}
+
+.pagination{
+  position: absolute;
+  margin-left:150px;
+  margin-top: -400px;
+}
+
+.row{
+  position: absolute;
+  margin-left:820px;
+  top: 0;
+}
+.iframe-container {
+  overflow: hidden;
+  padding-top: 56.25%;
+  position: relative;
+}
+
+.iframe-container iframe {
+   border: 0;
+   height: 50%;
+   left: 0;
+   position: absolute;
+   top: 0;
+   width: 45%;
+   border: 1px solid black;
+}
+
+.output {
+  background: #eee;
+}
